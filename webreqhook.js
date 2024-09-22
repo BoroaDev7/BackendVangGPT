@@ -3,12 +3,17 @@ const bodyParser = require("body-parser");
 const { SessionsClient } = require("@google-cloud/dialogflow-cx");
 const { LanguageServiceClient } = require("@google-cloud/language");
 
-const app = express();
+// Configura las variables de entorno
+const projectId = process.env.GOOGLE_CLOUD_PROJECT_ID;
+const locationId = process.env.GOOGLE_CLOUD_LOCATION_ID || "global";
+const agentId = process.env.GOOGLE_CLOUD_AGENT_ID;
 const port = process.env.PORT || 8080;
 
 // Instancia los clientes
 const sessionClient = new SessionsClient();
 const languageClient = new LanguageServiceClient();
+
+const app = express();
 
 app.use(bodyParser.json());
 
@@ -34,9 +39,9 @@ app.post("/webhook", async (req, res) => {
 // Función para detectar la intención en Dialogflow
 async function detectIntentDialogflowCX(messageText) {
   const sessionPath = sessionClient.projectLocationAgentSessionPath(
-    "still-function-381315",
-    "global",
-    "215f41c7-a8a3-409c-aac5-dd90a6f78483",
+    projectId,
+    locationId,
+    agentId,
     "session-id" // Puedes generar uno por cada usuario
   );
 
