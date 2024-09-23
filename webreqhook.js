@@ -121,6 +121,9 @@ app.post("/analyze-sentiment", async (req, res) => {
   }
 });
 
+console.log("Project ID:", projectId);
+console.log("Location ID:", locationId);
+console.log("Agent ID:", agentId);
 // Iniciar el servidor
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
