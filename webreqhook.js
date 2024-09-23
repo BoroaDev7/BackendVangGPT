@@ -4,9 +4,10 @@ const { SessionsClient } = require("@google-cloud/dialogflow-cx");
 const { LanguageServiceClient } = require("@google-cloud/language");
 
 // Configura las variables de entorno
-const projectId = process.env.GOOGLE_CLOUD_PROJECT_ID;
+const projectId = process.env.project_id || "still-function-381315";
 const locationId = process.env.GOOGLE_CLOUD_LOCATION_ID || "global";
-const agentId = process.env.GOOGLE_CLOUD_AGENT_ID;
+const agentId =
+  process.env.GOOGLE_CLOUD_AGENT_ID || "215f41c7-a8a3-409c-aac5-dd90a6f78483";
 const port = process.env.PORT || 8080;
 
 // Instancia los clientes
